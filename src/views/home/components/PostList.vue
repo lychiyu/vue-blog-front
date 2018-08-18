@@ -1,13 +1,35 @@
 <template>
-    <div></div>
+    <div class="post-list">
+      <div class="post-list-container">
+        <post-item class="item"></post-item>
+        <post-item class="item"></post-item>
+        <post-item class="item"></post-item>
+        <post-item class="item"></post-item>
+      </div>
+    </div>
 </template>
 
 <script>
+import PostItem from 'components/PostItem'
 export default {
-  name: 'PostList'
+  name: 'PostList',
+  components: {
+    PostItem
+  }
 }
 </script>
 
-<style scoped>
-
+<style lang="stylus" scoped>
+  @import "~styles/mixins.styl"
+  .post-list
+    padding 30px 50px
+    background #f7f7f7
+    .post-list-container
+      container()
+      display flex
+      flex-wrap wrap
+      justify-content start
+      padding 0 40px
+      .item
+        width: 33.33%;
 </style>

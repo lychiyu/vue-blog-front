@@ -31,13 +31,17 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  @import "~styles/mixins.styl"
   .nav
     padding 0 20px
     height 68px
     line-height 68px
+    margin-bottom 2px
+    box-shadow 0 2px 2px #d3d3d3
     .nav-container
+      container()
       display flex
-      justify-content space-around
+      justify-content space-between
       .logo
         img
           vertical-align center
