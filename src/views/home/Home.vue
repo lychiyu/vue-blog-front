@@ -1,10 +1,16 @@
 <template>
-    <div></div>
+    <div>
+      <blog-nav></blog-nav>
+    </div>
 </template>
 
 <script>
+import BlogNav from 'components/Nav'
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {
+    BlogNav
+  }
 }
 </script>
 
