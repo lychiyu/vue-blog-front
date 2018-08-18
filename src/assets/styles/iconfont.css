@@ -14,8 +14,3 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-.icon-search:before { content: "\e6cc"; }
-
-.icon-menu:before { content: "\e7e9"; }
-

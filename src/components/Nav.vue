@@ -1,13 +1,60 @@
 <template>
-    <div></div>
+  <div class="nav">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="">
+          <img :src=logo alt="lychiyu">
+        </a>
+      </div>
+      <div class="nav-contents">
+        <div class="links">
+          <router-link to="/archives">Archives</router-link>
+          <router-link to="/categories">Categories</router-link>
+          <router-link to="/about">About</router-link>
+        </div>
+        <router-link tag="span" class="nav-search iconfont" to="/search">&#xe6cc;</router-link>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Nav'
+  name: 'Nav',
+  data () {
+    return {
+      logo: 'https://img.lychiyu.com/logo.png',
+      show: false
+    }
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
-
+  .nav
+    padding 0 20px
+    height 68px
+    line-height 68px
+    .nav-container
+      display flex
+      justify-content space-around
+      .logo
+        img
+          vertical-align center
+          width: auto;
+          height: 28px;
+          outline: 0;
+      .nav-contents
+        display flex
+        .links
+          a
+            margin 0 20px
+            text-decoration none
+            color #313131
+            &:hover
+              color #eb5055
+        .nav-search
+          padding 0 10px
+          font-weight 700
+          cursor pointer
 </style>
