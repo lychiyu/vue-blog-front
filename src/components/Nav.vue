@@ -9,7 +9,7 @@
       <div class="nav-contents">
         <div class="links">
           <router-link to="/archives">Archives</router-link>
-          <router-link to="/categories">Categories</router-link>
+          <router-link to="/cate">Categories</router-link>
           <router-link to="/about">About</router-link>
         </div>
         <router-link tag="span" class="nav-search iconfont" to="/search">&#xe6cc;</router-link>
