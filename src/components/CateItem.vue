@@ -31,7 +31,7 @@ export default {
     width 50%
     box-sizing border-box
     height 130px
-    padding 15px
+    padding 15px 20px 15px 0
     .item-container
       border-radius 3px
       background #ffffff

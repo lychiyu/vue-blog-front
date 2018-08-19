@@ -8,7 +8,7 @@
       </div>
       <div class="nav-contents">
         <div class="links">
-          <router-link to="/archives">Archives</router-link>
+          <router-link to="/archive">Archives</router-link>
           <router-link to="/cate">Categories</router-link>
           <router-link to="/about">About</router-link>
         </div>
