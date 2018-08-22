@@ -11,9 +11,9 @@ import PostItem from 'components/PostItem'
 export default {
   name: 'PostList',
   props: ['posts'],
-  data () {
-    return {
-      postList: this.posts
+  computed: {
+    postList () {
+      return this.posts
     }
   },
   components: {
