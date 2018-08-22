@@ -1,10 +1,7 @@
 <template>
     <div class="post-list">
       <div class="post-list-container">
-        <post-item class="item"></post-item>
-        <post-item class="item"></post-item>
-        <post-item class="item"></post-item>
-        <post-item class="item"></post-item>
+        <post-item class="item" v-for="item in postList" :key="item.id" :postItem="item"></post-item>
       </div>
     </div>
 </template>
@@ -13,6 +10,12 @@
 import PostItem from 'components/PostItem'
 export default {
   name: 'PostList',
+  props: ['posts'],
+  data () {
+    return {
+      postList: this.posts
+    }
+  },
   components: {
     PostItem
   }
