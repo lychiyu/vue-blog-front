@@ -1,22 +1,22 @@
 <template>
     <div class="post-item">
       <div class="item-container">
-        <div class="item-thumb" :style="{backgroundImage:'url(' + post_img + ')'}"></div>
+        <div class="item-thumb" :style="{backgroundImage:'url(' + post.big_pic + ')'}"></div>
         <a href="">
           <div class="item-summary">
-            <p>文章摘要</p>
+            <p>{{post.summary}}</p>
           </div>
         </a>
         <div class="item-slant reverse-slant"></div>
         <div class="item-slant"></div>
         <div class="item-label">
           <div class="item-title">
-            <router-link to="/">TensorFlow 的核心概念</router-link>
+            <router-link to="/">{{post.title}}</router-link>
           </div>
           <div class="item-cate">
-            <router-link to="/">Vue</router-link>
+            <router-link to="/">{{post.cate.name}}</router-link>
             <div class="icon-wrapper">
-              <img class="cate-icon" :src=cat_icon alt="">
+              <img style="border-radius: 50%" class="cate-icon" :src=post.small_pic alt="">
             </div>
           </div>
         </div>
@@ -26,10 +26,10 @@
 
 <script>
 export default {
+  props: ['postItem'],
   data () {
     return {
-      'post_img': 'https://img.lychiyu.com/post-img.jpg',
-      'cat_icon': 'https://img.lychiyu.com/cat-icon.png'
+      post: this.postItem
     }
   },
   name: 'PostItem'

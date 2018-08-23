@@ -5,8 +5,10 @@ import App from './App'
 import router from './router'
 import 'styles/reset.css'
 import 'styles/iconfont.css'
+import Axios from 'axios'
 
 Vue.config.productionTip = false
+Vue.prototype.$http = Axios
 
 /* eslint-disable no-new */
 new Vue({

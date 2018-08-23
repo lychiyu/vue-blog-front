@@ -2,11 +2,11 @@
     <div class="item">
       <div class="item-container">
         <div class="item-title">
-          <router-link to="">{{title}}</router-link>
+          <router-link to="/">{{post.title}}</router-link>
         </div>
         <div class="item-other">
-          <p class="item-date">{{date}}</p>
-          <p class="item-pic"><img :src=cate_icon alt=""></p>
+          <p class="item-date">{{post.create_time}}</p>
+          <p class="item-pic"><img style="border-radius: 50%" :src=post.small_img alt=""></p>
         </div>
       </div>
     </div>
@@ -15,11 +15,10 @@
 <script>
 export default {
   name: 'CateItem',
-  data () {
-    return {
-      title: 'TensorFlow的核心概念',
-      date: 'Apr 1, 2018',
-      cate_icon: 'https://img.lychiyu.com/cat-icon.png'
+  props: ['postItem'],
+  computed: {
+    post () {
+      return this.postItem
     }
   }
 }

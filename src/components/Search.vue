@@ -7,9 +7,9 @@
         <button style="cursor: pointer" type="submit" class="spsubmit">
           <i class="iconfont icon-search">&#xe6cc;</i>
         </button></span>
-      <div class="search-tags">
-        <p style="display: inline-block" v-for="tag in tags" :key="tag.id">
-          <router-link :to="{path:'/tag/'+tag.id}"># {{tag.name}} ({{tag.amount}})</router-link>
+      <div class="search-tags" v-if="show">
+        <p style="display: inline-block" v-for="item in tagLsit" :key="item.id">
+          <router-link :to="{path:'/tag/'+item.id}"># {{item.name}} ({{item.amount}})</router-link>
         </p>
       </div>
     </div>
@@ -19,20 +19,13 @@
 <script>
 export default {
   name: 'Search',
-  data () {
-    return {
-      tags: [
-        {'id': 1, 'name': 'vue', 'amount': 1},
-        {'id': 2, 'name': 'python', 'amount': 10},
-        {'id': 3, 'name': 'javascript', 'amount': 9},
-        {'id': 4, 'name': 'javascript', 'amount': 9},
-        {'id': 5, 'name': 'javascript', 'amount': 9},
-        {'id': 6, 'name': 'javascript', 'amount': 9},
-        {'id': 7, 'name': 'javascript', 'amount': 9},
-        {'id': 8, 'name': 'javascript', 'amount': 9},
-        {'id': 9, 'name': 'javascript', 'amount': 9},
-        {'id': 10, 'name': 'javascript', 'amount': 9}
-      ]
+  props: ['tags', 'total'],
+  computed: {
+    tagLsit () {
+      return this.tags
+    },
+    show () {
+      return this.total
     }
   }
 }
