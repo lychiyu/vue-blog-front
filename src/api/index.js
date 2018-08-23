@@ -7,3 +7,6 @@ export const articleList = params => { return axios.get(`${host}/article/`, para
 
 // tags列表
 export const tagList = params => { return axios.get(`${host}/tag/`, params) }
+
+// 归档
+export const archive = params => { return axios.get(`${host}/archive/`, params) }
