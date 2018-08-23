@@ -2,9 +2,9 @@
     <div class="item">
       <div class="item-container">
         <div class="title">
-          <router-link to="/">{{title}}</router-link>
+          <router-link to="/">{{post.title}}</router-link>
         </div>
-        <div class="desc">{{date}}</div>
+        <div class="desc">{{post.create_time}}</div>
       </div>
     </div>
 </template>
@@ -12,6 +12,7 @@
 <script>
 export default {
   name: 'ArchiveItem',
+  props: ['post'],
   data () {
     return {
       title: 'TensorFlow的核心概念',

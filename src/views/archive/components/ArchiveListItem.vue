@@ -1,12 +1,8 @@
 <template>
     <div class="list-item">
-      <div class="item-title">{{date}}</div>
+      <div class="item-title">{{archiveList.date}}</div>
       <div class="item-container">
-        <archive-item></archive-item>
-        <archive-item></archive-item>
-        <archive-item></archive-item>
-        <archive-item></archive-item>
-        <archive-item></archive-item>
+        <archive-item v-for="item in archiveList.article" :key="item.id" :post="item"></archive-item>
       </div>
     </div>
 </template>
@@ -16,6 +12,7 @@ import ArchiveItem from 'components/ArchiveItem'
 
 export default {
   name: 'ArchiveListItem',
+  props: ['archiveList'],
   data () {
     return {
       date: 'Apr 2018'

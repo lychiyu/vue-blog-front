@@ -1,7 +1,7 @@
 <template>
     <div class="archive-list">
       <div class="archive-list-container">
-        <archive-item></archive-item>
+        <archive-item :archiveList="archiveList"></archive-item>
       </div>
     </div>
 </template>
@@ -11,6 +11,7 @@ import ArchiveItem from './ArchiveListItem'
 
 export default {
   name: 'ArchiveList',
+  props: ['archiveList'],
   components: {
     ArchiveItem
   }
