@@ -1,13 +1,9 @@
 <template>
     <div class="cate-list">
-      <div class="cate-list-container">
-        <cate-title></cate-title>
+      <div class="cate-list-container"  v-for="item in postList" :key="item.id">
+        <cate-title :type="type" :name="item.name"></cate-title>
         <div class="list-container">
-          <cate-item class="item"></cate-item>
-          <cate-item class="item"></cate-item>
-          <cate-item class="item"></cate-item>
-          <cate-item class="item"></cate-item>
-          <cate-item class="item"></cate-item>
+          <cate-item v-for="post in item.posts" class="item" :key="post.id" :postItem="post"></cate-item>
         </div>
       </div>
     </div>
@@ -18,6 +14,17 @@ import CateItem from 'components/CateItem'
 import CateTitle from 'components/CateTitle'
 export default {
   name: 'CateList',
+  props: ['posts'],
+  data () {
+    return {
+      type: 'Categroy'
+    }
+  },
+  computed: {
+    postList () {
+      return this.posts
+    }
+  },
   components: {
     CateTitle,
     CateItem

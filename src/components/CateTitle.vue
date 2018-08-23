@@ -1,16 +1,19 @@
 <template>
     <div class="title">
-      <p>{{name}} : {{title}}</p>
+      <p>{{showName}} : {{title}}</p>
     </div>
 </template>
 
 <script>
 export default {
   name: 'CateTitle',
-  data () {
-    return {
-      name: 'Category',
-      title: 'Tutorials'
+  props: ['name', 'type'],
+  computed: {
+    title () {
+      return this.name
+    },
+    showName () {
+      return this.type
     }
   }
 }

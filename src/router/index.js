@@ -18,12 +18,18 @@ export default new Router({
     {
       path: '/cate',
       name: 'Categroy',
-      component: Categroy
+      component: Categroy,
+      children: [
+        {path: '/cate/:id', component: Categroy}
+      ]
     },
     {
-      path: '/tag',
+      path: '/tags',
       name: 'Tag',
-      component: Tag
+      component: Tag,
+      children: [
+        {path: '/tags/:id', component: Tag}
+      ]
     },
     {
       path: '/search',
