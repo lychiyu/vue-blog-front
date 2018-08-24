@@ -1,22 +1,22 @@
 <template>
     <div class="post-item">
       <div class="item-container">
-        <div class="item-thumb" :style="{backgroundImage:'url(' + post.big_pic + ')'}"></div>
-        <a href="">
+        <div class="item-thumb" :style="{backgroundImage:'url(' + postItem.big_pic + ')'}"></div>
+        <router-link :to="{path:'/post/'+postItem.id}">
           <div class="item-summary">
-            <p>{{post.summary}}</p>
+            <p>{{postItem.summary}}</p>
           </div>
-        </a>
+        </router-link>
         <div class="item-slant reverse-slant"></div>
         <div class="item-slant"></div>
         <div class="item-label">
           <div class="item-title">
-            <router-link to="/">{{post.title}}</router-link>
+            <router-link :to="{path:'/post/'+postItem.id}">{{postItem.title}}</router-link>
           </div>
           <div class="item-cate">
-            <router-link to="/">{{post.cate.name}}</router-link>
+            <router-link :to="{path:'/cate/'+postItem.cate.id}">{{postItem.cate.name}}</router-link>
             <div class="icon-wrapper">
-              <img style="border-radius: 50%" class="cate-icon" :src=post.small_pic alt="">
+              <img style="border-radius: 50%" class="cate-icon" :src=postItem.small_pic alt="">
             </div>
           </div>
         </div>
@@ -27,11 +27,6 @@
 <script>
 export default {
   props: ['postItem'],
-  data () {
-    return {
-      post: this.postItem
-    }
-  },
   name: 'PostItem'
 }
 </script>

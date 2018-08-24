@@ -40,7 +40,11 @@ export default {
   },
   methods: {
     getPosts () {
-      articleList({params: {is_about: 0}}).then(res => {
+      let params = {is_about: 0}
+      if (this.$route.name === 'SearchPost') {
+        params.search = this.$route.params.keywords
+      }
+      articleList({params: params}).then(res => {
         this.posts = res.data.results
       }).catch(err => {
         console.log(err)

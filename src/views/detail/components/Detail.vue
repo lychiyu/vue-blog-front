@@ -3,17 +3,17 @@
       <article class="container">
         <div class="post-header">
           <h1 class="post-title"> {{detail.title}} </h1>
-          <div class="pub-desc">
+          <div class="pub-desc" v-if="!detail.is_about">
             Published on {{detail.create_time}} in
             <router-link :to="{path:'/cate/'+cate.id}"> {{cate.name}}</router-link>
           </div>
           <p class="post-tags">
-            <router-link :class="bg[tag.id % 3]" v-for="tag in tags" :key="tag.id" :to="{path:'/tag/'+tag.id}">{{tag.name}}</router-link>
+            <router-link v-if="!detail.is_about" :class="bg[tag.id % 3]" v-for="tag in tags" :key="tag.id" :to="{path:'/tags/'+tag.id}">{{tag.name}}</router-link>
           </p>
         </div>
         <div class="post-contents" v-html="detail.html_content" v-highlight>
         </div>
-        <p class="post-copyright"> 本文由 <a href="">lychiyu</a> 创作，采用 <a
+        <p v-if="!detail.is_about" class="post-copyright"> 本文由 <a href="">lychiyu</a> 创作，采用 <a
           href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a>
           国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: {{detail.update_time}} </p>
       </article>

@@ -1,7 +1,8 @@
 <template>
     <div class="categroy">
       <blog-nav></blog-nav>
-      <cate-list :posts="posts"></cate-list>
+      <cate-list v-if="posts.length" :posts="posts"></cate-list>
+      <loading v-if="!posts.length"></loading>
       <copyright></copyright>
     </div>
 </template>
@@ -10,6 +11,7 @@
 import BlogNav from 'components/Nav'
 import CateList from './components/CateList'
 import Copyright from 'components/Copyright'
+import Loading from 'components/Loading'
 
 import {articleList} from '../../api'
 
@@ -23,7 +25,8 @@ export default {
   components: {
     BlogNav,
     CateList,
-    Copyright
+    Copyright,
+    Loading
   },
   methods: {
     getPosts () {

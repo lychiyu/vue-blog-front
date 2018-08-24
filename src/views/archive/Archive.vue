@@ -1,9 +1,10 @@
 <template>
     <div class="archive">
       <blog-nav></blog-nav>
-      <div class="list">
+      <div class="list" v-if="archiveData.length">
         <archive-list v-for="item in archiveData" :archiveList="item" :key="item.date"></archive-list>
       </div>
+      <loading v-if="!archiveData.length"></loading>
       <copyright></copyright>
     </div>
 </template>
@@ -12,6 +13,7 @@
 import BlogNav from 'components/Nav'
 import ArchiveList from './components/ArchiveList'
 import Copyright from 'components/Copyright'
+import Loading from 'components/Loading'
 
 import {archive} from '../../api'
 
@@ -25,7 +27,8 @@ export default {
   components: {
     BlogNav,
     ArchiveList,
-    Copyright
+    Copyright,
+    Loading
   },
   methods: {
     getArchive () {

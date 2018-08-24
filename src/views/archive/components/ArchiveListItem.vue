@@ -2,7 +2,7 @@
     <div class="list-item">
       <div class="item-title">{{archiveList.date}}</div>
       <div class="item-container">
-        <archive-item v-for="item in archiveList.article" :key="item.id" :post="item"></archive-item>
+        <archive-item v-if="!item.is_about" v-for="item in archiveList.article" :key="item.id" :post="item"></archive-item>
       </div>
     </div>
 </template>

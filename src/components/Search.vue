@@ -4,12 +4,12 @@
       <span class="search-box">
         <input type="text" v-model="input" id="input" class="input" name="s" required="true" placeholder="Search..."
                maxlength="30" autocomplete="off" @keyup.enter="search">
-        <button style="cursor: pointer" type="submit" class="spsubmit">
+        <button style="cursor: pointer" type="submit" class="spsubmit" @click="searchPosts">
           <i class="iconfont icon-search">&#xe6cc;</i>
         </button></span>
       <div class="search-tags" v-if="show">
         <p style="display: inline-block" v-for="item in tagLsit" :key="item.id">
-          <router-link :to="{path:'/tag/'+item.id}"># {{item.name}} ({{item.amount}})</router-link>
+          <router-link :to="{path:'/tags/'+item.id}"># {{item.name}} ({{item.amount}})</router-link>
         </p>
       </div>
     </div>
@@ -31,6 +31,14 @@ export default {
     },
     show () {
       return this.total
+    }
+  },
+  methods: {
+    searchPosts () {
+      if (this.input === '') {
+        return
+      }
+      this.$router.push({name: 'SearchPost', params: {keywords: this.input}})
     }
   }
 }

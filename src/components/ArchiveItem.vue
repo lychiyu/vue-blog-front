@@ -15,8 +15,8 @@ export default {
   props: ['post'],
   data () {
     return {
-      title: 'TensorFlow的核心概念',
-      date: 'Apr 1, 2018'
+      title: '',
+      date: ''
     }
   }
 }

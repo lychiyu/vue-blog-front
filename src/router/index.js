@@ -36,9 +36,6 @@ export default new Router({
       path: '/search',
       name: 'Search',
       component: Search,
-      children: [
-        {path: '/search/:keywords', component: PostDetail}
-      ]
     },
     {
       path: '/archive',
@@ -54,6 +51,11 @@ export default new Router({
       path: '/post/:id',
       name: 'PostDetail',
       component: PostDetail
+    },
+    {
+      path: '/search/:keywords',
+      name: 'SearchPost',
+      component: Home
     }
   ]
 })
