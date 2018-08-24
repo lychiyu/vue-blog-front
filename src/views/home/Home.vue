@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     getPosts () {
-      articleList().then(res => {
+      articleList({params: {is_about: 0}}).then(res => {
         this.posts = res.data.results
       }).catch(err => {
         console.log(err)

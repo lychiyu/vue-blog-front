@@ -10,3 +10,6 @@ export const tagList = params => { return axios.get(`${host}/tag/`, params) }
 
 // 归档
 export const archive = params => { return axios.get(`${host}/archive/`, params) }
+
+// 文章详情
+export const articleDetail = id => { return axios.get(`${host}/article/` + id + '/') }

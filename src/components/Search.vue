@@ -19,6 +19,11 @@
 <script>
 export default {
   name: 'Search',
+  data () {
+    return {
+      input: ''
+    }
+  },
   props: ['tags', 'total'],
   computed: {
     tagLsit () {
