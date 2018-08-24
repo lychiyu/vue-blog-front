@@ -1,7 +1,8 @@
 <template>
   <div class="tag">
     <blog-nav></blog-nav>
-    <tag-list :posts="posts"></tag-list>
+    <tag-list v-if="posts.length" :posts="posts"></tag-list>
+    <loading v-if="!posts.length"></loading>
     <copyright></copyright>
   </div>
 </template>
@@ -11,6 +12,7 @@ import {articleList} from '../../api'
 import BlogNav from 'components/Nav'
 import TagList from 'views/tag/components/TagList'
 import Copyright from 'components/Copyright'
+import Loading from 'components/Loading'
 
 export default {
   name: 'Tag',
@@ -22,7 +24,8 @@ export default {
   components: {
     BlogNav,
     TagList,
-    Copyright
+    Copyright,
+    Loading
   },
   methods: {
     getPosts () {

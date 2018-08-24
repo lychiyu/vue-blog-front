@@ -8,9 +8,9 @@
       </div>
       <div class="nav-contents">
         <div class="links">
-          <router-link to="/archive">Archives</router-link>
-          <router-link to="/cate">Categories</router-link>
-          <router-link to="/about">About</router-link>
+          <router-link active-class="active" to="/archive">Archives</router-link>
+          <router-link active-class="active" to="/cate">Categories</router-link>
+          <router-link active-class="active" to="/about">About</router-link>
         </div>
         <router-link tag="span" class="nav-search iconfont" to="/search">&#xe6cc;</router-link>
       </div>
@@ -57,6 +57,8 @@ export default {
             color #313131
             &:hover
               color #eb5055
+          .active
+            color #eb5055
         .nav-search
           padding 0 10px
           font-weight 700

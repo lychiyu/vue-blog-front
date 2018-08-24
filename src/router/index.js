@@ -5,6 +5,7 @@ import Categroy from 'views/categroy/Categroy'
 import Tag from 'views/tag/Tag'
 import Search from 'views/search/Search'
 import Archive from 'views/archive/Archive'
+import PostDetail from 'views/detail/PostDetail'
 
 Vue.use(Router)
 
@@ -34,12 +35,27 @@ export default new Router({
     {
       path: '/search',
       name: 'Search',
-      component: Search
+      component: Search,
     },
     {
       path: '/archive',
       name: 'Archive',
       component: Archive
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: PostDetail
+    },
+    {
+      path: '/post/:id',
+      name: 'PostDetail',
+      component: PostDetail
+    },
+    {
+      path: '/search/:keywords',
+      name: 'SearchPost',
+      component: Home
     }
   ]
 })

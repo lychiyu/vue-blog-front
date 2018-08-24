@@ -2,7 +2,7 @@
     <div class="item">
       <div class="item-container">
         <div class="item-title">
-          <router-link to="/">{{post.title}}</router-link>
+          <router-link :to="{path:'/post/'+post.id}">{{post.title}}</router-link>
         </div>
         <div class="item-other">
           <p class="item-date">{{post.create_time}}</p>

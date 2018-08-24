@@ -6,6 +6,15 @@ import router from './router'
 import 'styles/reset.css'
 import 'styles/iconfont.css'
 import Axios from 'axios'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/xcode.css' // 样式文件
+
+Vue.directive('highlight', function (el) {
+  let blocks = el.querySelectorAll('pre code')
+  blocks.forEach((block) => {
+    hljs.highlightBlock(block)
+  })
+})
 
 Vue.config.productionTip = false
 Vue.prototype.$http = Axios
