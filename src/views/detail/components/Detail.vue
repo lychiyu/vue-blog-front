@@ -16,6 +16,7 @@
         <p v-if="!detail.is_about" class="post-copyright"> 本文由 <a href="">lychiyu</a> 创作，采用 <a
           href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a>
           国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: {{detail.update_time}} </p>
+        <vue-comment class="comments" :options="options" v-if="options"></vue-comment>
       </article>
     </div>
 </template>
@@ -24,6 +25,19 @@
 export default {
   name: 'Detail',
   props: ['detail', 'cate', 'tags'],
+  data () {
+    return {
+      options: {
+        id: this.detail.id, // 评论页唯一标识符
+        owner: 'lychiyu', // github用户名
+        repo: 'blog_comments', // 用于存放评论的仓库
+        oauth: {
+          client_id: '',
+          client_secret: ''
+        }
+      }
+    }
+  },
   computed: {
     bg () {
       const bgList = ['bg1', 'bg2', 'bg3']
@@ -210,4 +224,16 @@ export default {
             padding 1em
             color #313131
             border-radius 3px
+      .comments
+        .gitment-comment-main, gitment-editor-main
+          border-radius 10px
+        .gitment-editor-avatar-img,.gitment-comment-avatar-img
+          border-radius 50%
+        .gitment-editor-submit
+          background #eb5055
+        .gitment-footer-container
+          display none
+        .gitment-comment-body
+          color #333333
+        background transparent
 </style>
