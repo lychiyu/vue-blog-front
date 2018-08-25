@@ -1,4 +1,4 @@
-import moment from "moment/moment"
+import moment from 'moment/moment'
 
 export const formatDate = (date, type = 'default') => {
   let f = 'MMMM D, YYYY'

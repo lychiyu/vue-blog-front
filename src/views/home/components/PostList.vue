@@ -26,6 +26,10 @@ export default {
   @import "~styles/mixins.styl"
   .post-list
     padding 30px 50px
+    @media screen and (max-width: 1100px)
+      padding 10px 10px
+    @media screen and (max-width: 675px)
+      padding 0px 0px
     background #f7f7f7
     .post-list-container
       container()
@@ -33,6 +37,14 @@ export default {
       flex-wrap wrap
       justify-content start
       padding 0 40px
+      @media screen and (max-width: 1100px)
+        padding 0
+      @media screen and (max-width: 675px)
+        padding 0
       .item
-        width: 33.33%;
+        width 33.33%
+        @media screen and (max-width: 1100px)
+          width 50%
+        @media screen and (max-width: 675px)
+          width 100%
 </style>

@@ -130,8 +130,8 @@ export default {
               margin-right 10px
               color #5f5f5f
             .icon-wrapper
-              width 42px
-              height 42px
+              width 40px
+              height 40px
               padding 1px
               border 1px solid #eaeaea
               border-radius 50%
