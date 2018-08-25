@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import {commentOptions} from '@/utils'
 export default {
   name: 'Detail',
   props: ['detail', 'cate', 'tags'],
@@ -29,12 +30,9 @@ export default {
     return {
       options: {
         id: this.detail.id, // 评论页唯一标识符
-        owner: 'lychiyu', // github用户名
-        repo: 'blog_comments', // 用于存放评论的仓库
-        oauth: {
-          client_id: '',
-          client_secret: ''
-        }
+        owner: commentOptions.owner, // github用户名
+        repo: commentOptions.repo, // 用于存放评论的仓库
+        oauth: commentOptions.oauth
       }
     }
   },
