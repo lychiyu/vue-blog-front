@@ -1,5 +1,9 @@
 import moment from "moment/moment"
 
-export const formatDate = (date, formatStr = 'YYYY-MM-DD HH:mm:ss') => {
-  return moment(date).format(formatStr)
+export const formatDate = (date, type = 'default') => {
+  let f = 'MMMM D, YYYY'
+  if (type !== 'default') {
+    f = 'MMMM D, YYYY hh:mm:ss a'
+  }
+  return moment(date).format(f)
 }

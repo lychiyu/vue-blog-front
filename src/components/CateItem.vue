@@ -5,7 +5,7 @@
           <router-link :to="{path:'/post/'+post.id}">{{post.title}}</router-link>
         </div>
         <div class="item-other">
-          <p class="item-date">{{post.create_time}}</p>
+          <p class="item-date">{{post.create_time | formatDate}}</p>
           <p class="item-pic"><img style="border-radius: 50%" :src=post.small_img alt=""></p>
         </div>
       </div>

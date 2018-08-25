@@ -10,8 +10,13 @@ import Axios from 'axios'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/xcode.css' // 样式文件
 import 'gitment/style/default.css'
+import {formatDate} from './utils'
 
 Vue.use(VueGitment)
+
+Vue.filter('formatDate', (value, type) => {
+  return formatDate(value, type)
+})
 
 Vue.directive('highlight', function (el) {
   let blocks = el.querySelectorAll('pre code')
