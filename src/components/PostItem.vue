@@ -55,6 +55,7 @@ export default {
           .item-summary
             top 0
             & p
+              line-height: 18px
               opacity 1
         .item-thumb
           height 260px
