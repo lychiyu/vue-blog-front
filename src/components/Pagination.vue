@@ -1,25 +1,155 @@
 <template>
   <ul class="pagination">
     <!-- prev -->
-    <li>←</li>
+    <li
+      :class="['paging-item', 'paging-item--prev', {'paging-item--disabled' : index === 1}]"
+      @click="prev">←
+    </li>
     <!-- first -->
-    <li>first</li>
-    <li>...</li>
-    <li>{{page}}</li>
-    <li>...</li>
+    <li
+      :class="['paging-item', 'paging-item--first', {'paging-item--disabled' : index === 1}]"
+      @click="first">first
+    </li>
+    <li
+      :class="['paging-item', 'paging-item--more']"
+      v-if="showPrevMore">...
+    </li>
+    <li
+      :key="pager.index"
+      :class="['paging-item', {'paging-item--current' : index === pager}]"
+      v-for="pager in pagers"
+      @click="go(pager)">{{ pager }}
+    </li>
+    <li
+      :class="['paging-item', 'paging-item--more']"
+      v-if="showNextMore">...
+    </li>
     <!-- last -->
-    <li>last</li>
+    <li
+      :class="['paging-item', 'paging-item--last', {'paging-item--disabled' : index === pages}]"
+      @click="last">last
+    </li>
     <!-- next -->
-    <li>→</li>
+    <li
+      :class="['paging-item', 'paging-item--next', {'paging-item--disabled' : index === pages}]"
+      @click="next">→
+    </li>
   </ul>
 </template>
 
 <script>
 export default {
   name: 'Pagination',
+  // 通过props来接受从父组件传递过来的值
+  props: {
+    // 页面中的可见页码，其他的以...替代, 必须是奇数
+    perPages: {
+      type: Number,
+      default: 3
+    },
+    // 当前页码
+    pageIndex: {
+      type: Number,
+      default: 1
+    },
+    // 每页显示条数
+    pageSize: {
+      type: Number,
+      default: 9
+    },
+    // 总记录数
+    total: {
+      type: Number,
+      default: 1
+    }
+  },
   data () {
     return {
-      page: 1
+      index: this.pageIndex, // 当前页码
+      limit: this.pageSize, // 每页显示条数
+      size: this.total || 1 // 总记录数
+    }
+  },
+  watch: {
+    pageIndex (val) {
+      this.index = val || 1
+    },
+    pageSize (val) {
+      this.limit = val || 9
+    },
+    total (val) {
+      this.size = val || 1
+    }
+  },
+  computed: {
+    // 计算总页码
+    pages () {
+      return Math.ceil(this.size / this.limit)
+    },
+    offset () {
+      const perPages = this.perPages
+      let current = this.index
+      const _offset = (perPages - 1) / 2
+      const offset = {
+        start: current - _offset,
+        end: current + _offset
+      }
+      return offset
+    },
+    // 计算页码，当count等变化时自动计算
+    pagers () {
+      const array = []
+      const pageCount = this.pages
+      const offset = this.offset
+      // -1, 3
+      if (offset.start < 1) {
+        offset.end = offset.end + (1 - offset.start)
+        offset.start = 1
+      }
+      if (offset.end > pageCount) {
+        offset.start = offset.start - (offset.end - pageCount)
+        offset.end = pageCount
+      }
+      if (offset.start < 1) offset.start = 1
+      for (let i = offset.start; i <= offset.end; i++) {
+        array.push(i)
+      }
+      return array
+    },
+    showPrevMore () {
+      return (this.offset.start > 1)
+    },
+    showNextMore () {
+      return (this.offset.end < this.pages)
+    }
+  },
+  methods: {
+    prev () {
+      if (this.index > 1) {
+        this.go(this.index - 1)
+      }
+    },
+    next () {
+      if (this.index < this.pages) {
+        this.go(this.index + 1)
+      }
+    },
+    first () {
+      if (this.index !== 1) {
+        this.go(1)
+      }
+    },
+    last () {
+      if (this.index !== this.pages) {
+        this.go(this.pages)
+      }
+    },
+    go (page) {
+      if (this.index !== page) {
+        this.index = page
+        // 父组件通过change方法来接受当前的页码
+        this.$emit('pageChange', page)
+      }
     }
   }
 }
@@ -34,14 +164,17 @@ export default {
     user-select none
     justify-content center
     padding 20px 0
-    li
+    .paging-item
+      display inline
       font-size 14px
+      position relative
       padding 6px 12px
       line-height 1.42857143
       text-decoration none
       background-color transparent
       margin-left -1px
       cursor pointer
+      /*color #eb5055*/
       &:first-child
         margin-left 0
       &:hover

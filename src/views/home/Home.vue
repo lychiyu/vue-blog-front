@@ -2,7 +2,7 @@
     <div>
       <blog-nav></blog-nav>
       <post-list v-if="total" :posts="posts"></post-list>
-      <pagination v-if="total" :page="page" :total="total" :limit="limit"></pagination>
+      <pagination @pageChange="pageChange" v-if="total" :pageIndex="page" :total="total" :pageSize="limit"></pagination>
       <loading v-if="!total"></loading>
       <copyright></copyright>
     </div>
@@ -23,12 +23,8 @@ export default {
     return {
       posts: [],
       page: 1,
-      limit: 9
-    }
-  },
-  computed: {
-    total () {
-      return this.posts.length
+      limit: 9,
+      total: 0
     }
   },
   components: {
@@ -44,11 +40,19 @@ export default {
       if (this.$route.name === 'SearchPost') {
         params.search = this.$route.params.keywords
       }
+      params.limit = this.limit
+      params.page = this.page
       articleList({params: params}).then(res => {
+        this.total = res.data.count
         this.posts = res.data.results
       }).catch(err => {
         console.log(err)
       })
+    },
+    // 从page组件传递过来的当前page
+    pageChange (page) {
+      this.page = page
+      this.getPosts()
     }
   },
   mounted () {
