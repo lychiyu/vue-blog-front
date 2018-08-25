@@ -9,7 +9,7 @@
         </button></span>
       <div class="search-tags" v-if="show">
         <p style="display: inline-block" v-for="item in tagLsit" :key="item.id">
-          <router-link :to="{path:'/tags/'+item.id}"># {{item.name}} ({{item.amount}})</router-link>
+          <router-link v-if="item.amount" :to="{path:'/tags/'+item.id}"># {{item.name}} ({{item.amount}})</router-link>
         </p>
       </div>
     </div>
