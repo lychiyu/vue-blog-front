@@ -4,7 +4,7 @@
         <div class="post-header">
           <h1 class="post-title"> {{detail.title}} </h1>
           <div class="pub-desc" v-if="!detail.is_about">
-            Published on {{detail.create_time}} in
+            Published on {{detail.create_time | formatDate}} in
             <router-link :to="{path:'/cate/'+cate.id}"> {{cate.name}}</router-link>
           </div>
           <p class="post-tags">
@@ -15,7 +15,7 @@
         </div>
         <p v-if="!detail.is_about" class="post-copyright"> 本文由 <a href="">lychiyu</a> 创作，采用 <a
           href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a>
-          国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: {{detail.update_time}} </p>
+          国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: {{detail.update_time | formatDate('other')}} </p>
         <vue-comment class="comments" :options="options" v-if="options"></vue-comment>
       </article>
     </div>
@@ -58,6 +58,8 @@ export default {
       animation fade-in
       animation-duration .5s
       font-family "Microsoft Yahei"
+      @media screen and (max-width: 675px)
+        padding 50px 25px 20px
       .post-header
         padding 5px 0 15px
         border-bottom 1px solid #e0e0e0
@@ -225,11 +227,39 @@ export default {
             color #313131
             border-radius 3px
       .comments
+        @media screen and (max-width: 675px)
+          margin-top 50px
+          .gitment-comment-header, .gitment-editor-login,
+          .gitment-editor-tab, .gitment-comment-body, .gitment-markdown
+            font-size 12px
+          .gitment-editor-write-field textarea
+            padding 12px
+            font-size 12px
+            height 40px
+          .gitment-editor-main
+            margin-left -20px
+          .gitment-comment-main
+            border-radius 10px
+            margin-left -20px
+          .gitment-editor-avatar-img,.gitment-comment-avatar-img,.gitment-github-icon
+            width 30px
+            height 30px
+            border-radius 50%
+          .gitment-editor-submit
+            color #ffffff
+            background #eb5055
+            margin-top 20px
+            font-size 13px
+          .gitment-footer-container
+            display none
+          .gitment-comment-body
+            color #333333
         .gitment-comment-main, gitment-editor-main
           border-radius 10px
-        .gitment-editor-avatar-img,.gitment-comment-avatar-img
+        .gitment-editor-avatar-img,.gitment-comment-avatar-img,.gitment-github-icon
           border-radius 50%
         .gitment-editor-submit
+          color #ffffff
           background #eb5055
         .gitment-footer-container
           display none

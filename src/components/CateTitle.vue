@@ -23,6 +23,8 @@ export default {
   .title p
     font-family "Microsoft Yahei"
     padding 20px 0 30px
+    @media screen and (max-width: 675px)
+      padding 10px
     &::before
       content "#"
       color #eb5055

@@ -38,11 +38,15 @@ export default {
   .tag-list
     padding 30px 50px
     background #f7f7f7
+    @media screen and (max-width: 675px)
+      padding 10px 5px
     .tag-list-container
       container()
       display flex
       flex-direction column
       padding 0 100px
+      @media screen and (max-width: 675px)
+        padding 0
       .list-container
         width 100%
         display flex

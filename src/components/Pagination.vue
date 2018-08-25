@@ -164,6 +164,8 @@ export default {
     user-select none
     justify-content center
     padding 20px 0
+    @media screen and (max-width: 1100px)
+      padding 0
     .paging-item
       display inline
       font-size 14px

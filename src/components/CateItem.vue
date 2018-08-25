@@ -5,7 +5,7 @@
           <router-link :to="{path:'/post/'+post.id}">{{post.title}}</router-link>
         </div>
         <div class="item-other">
-          <p class="item-date">{{post.create_time}}</p>
+          <p class="item-date">{{post.create_time | formatDate}}</p>
           <p class="item-pic"><img style="border-radius: 50%" :src=post.small_img alt=""></p>
         </div>
       </div>
@@ -31,17 +31,16 @@ export default {
     box-sizing border-box
     height 130px
     padding 15px 20px 15px 0
+    @media screen and (max-width: 675px)
+      width 100%
+      padding 10px
+      margin-bottom 10px
     .item-container
       border-radius 3px
       background #ffffff
       font-family "Microsoft Yahei"
       box-shadow 1px 1px 2px #dcdcdc
       transition transform box-shadow .5s ease,filter .5s ease
-      &:hover
-        transform scale(1.02)
-        box-shadow 2px 2px 3px #dcdcdc
-        .item-pic
-          transform rotate(360deg) translate(0px,0)
       .item-title
         padding 20px
         line-height 20px
@@ -58,8 +57,8 @@ export default {
           line-height 40px
           color #5f5f5f
         .item-pic
-          width 42px
-          height 42px
+          width 40px
+          height 40px
           padding 1px
           border 1px solid #eaeaea
           border-radius 50%
@@ -67,4 +66,5 @@ export default {
           img
             height 40px
             width 40px
+            vertical-align center
 </style>
