@@ -32,6 +32,8 @@ export default {
     .item-title
       color #5f5f5f
       padding 20px 0
+      @media screen and (max-width: 675px)
+        padding 10px 0
       &::before
         content '#'
         color #eb5055

@@ -28,6 +28,9 @@ export default {
     padding 20px 20px 20px 0
     box-sizing border-box
     width 33.33%
+    @media screen and (max-width: 675px)
+      width 100%
+      padding 5px 10px
     .item-container
       border-radius 3px
       height 100px
